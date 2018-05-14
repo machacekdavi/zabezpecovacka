@@ -29,5 +29,8 @@
     <ClCompile Include="centrala.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="senzor.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>

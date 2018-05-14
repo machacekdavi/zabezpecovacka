@@ -146,6 +146,12 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="centrala.h" />
+    <ClInclude Include="senzor.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="centrala.cpp" />
+    <ClCompile Include="main.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

@@ -2,18 +2,21 @@
 #include "senzor.h"
 #include "centrala.h"
 #include <iostream>
+#include <fstream>
 
 using namespace std;
 
 int main(int argc, char ** argv)
 {
 	centrala Daviduv;
-	senzor Machy;
-	senzor Machy2;
-	senzor Machy3;
 	
-	Machy.umistit("obyvak");
-	Machy2.umistit("kuchyne");
+	//Daviduv.inicializace();
+	/**/
+	Daviduv.pridejsenzordum(new senzorPohybovy());
+	Daviduv.pridejsenzordum(new senzorPozarni());
+	Daviduv.pridejsenzordum(new co2senzor());
+
+	Daviduv.pridejsenzor(d_budova::GARAZ, new co2senzor());
 
 	Daviduv.zamknivse();
 
@@ -22,21 +25,11 @@ int main(int argc, char ** argv)
 	Daviduv.zamknigaraz();
 
 	Daviduv.odemkni(VSE);
-
-	//Daviduv.pridejsenzor(pozarni, GARAZ);
-	Daviduv.pridejsenzor(Machy);
-	Daviduv.pridejsenzor(Machy2);
-	Daviduv.pridejsenzor(Machy3);
-
-	//David.zobraz();
-	//cout << endl;
-	//cout << "ted se vypise Honza " << endl;
-	//Honza.zobraz();
-	//David.pojmenuj("Machy");
-	//cout << "Jmeno je: " << David.vratjmeno() << endl;
+	/**/
+	Daviduv.ulozkonfiguraci();
+	
 
 	Daviduv.zobraz();
-
 
 	return 0;
 }

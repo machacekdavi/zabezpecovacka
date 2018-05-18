@@ -10,14 +10,14 @@ public:
 	senzor();
 	~senzor();
 	bool je_funkcni();
-	bool je_poplach();
-	virtual void jakysenzor();
+	virtual bool je_poplach() = 0;
+	virtual void jakysenzor() = 0;
 	virtual void umistit(char* mis);
 	virtual void kdeje();
+	friend std::ostream& operator<< (std::ostream& stm, const senzor& gar);
 
 protected:
 	char* umisteni;
-	bool poplach;
 	bool funkcni;
 };
 
@@ -27,6 +27,7 @@ public:
 	senzorPohybovy();
 	~senzorPohybovy();
 	virtual void jakysenzor();
+	virtual bool je_poplach();
 
 private:
 
@@ -38,6 +39,7 @@ public:
 	senzorPozarni();
 	~senzorPozarni();
 	virtual void jakysenzor();
+	virtual bool je_poplach();
 
 private:
 	int teplota;
@@ -50,6 +52,7 @@ public:
 	co2senzor();
 	~co2senzor();
 	virtual void jakysenzor();
+	virtual bool je_poplach();
 
 private:
 	int co2;

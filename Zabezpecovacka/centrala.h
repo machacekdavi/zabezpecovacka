@@ -10,14 +10,17 @@ class base
 public:
 	base();
 	~base();
+	virtual void zamkni() = 0;
+	void zobraz();
+	void pridejsenzor(senzor *sen);
+	void uloz();
+	friend std::ostream& operator<< (std::ostream& stm, const base& bb);
 
 protected:
 	int pocetsenzoru;
 	bool zamceno;
 	bool poplach;
-	std::vector<senzor> pole; 
-	std::vector<senzor>::iterator p;
-
+	std::vector<senzor*> pole; 
 };
 
 class domov: public base
@@ -37,13 +40,14 @@ public:
 	garaz();
 	~garaz();
 	virtual void zamkni();
+	friend std::ostream& operator<< (std::ostream& stm, const garaz& gar);
 
 private:
 
 };
 
 
-class centrala: public domov, public garaz
+class centrala
 {
 public:
 	centrala();
@@ -52,12 +56,16 @@ public:
 	void zamknigaraz();
 	void zamknidum();
 	void odemkni(d_budova budova);
-	void pridejsenzor(senzor sen);
-	//void pridejsenzor(d_typsenzor senzor, d_budova misto);
+	void pridejsenzordum(senzor* sen);
+	void pridejsenzor(d_budova budova, senzor* sen);
 	void smazsenzor();
-	//void zobraz(std::vector<senzor> pol);
 	void zobraz();
+	void inicializace();
+	void ulozkonfiguraci();
+	
 
 private:
-
+	garaz _garaz;
+	domov _domov;
+	base* vyberbudovy(d_budova budova);
 };

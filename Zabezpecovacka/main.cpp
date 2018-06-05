@@ -12,24 +12,34 @@ int main(int argc, char ** argv)
 	
 	//Daviduv.inicializace();
 	/**/
-	Daviduv.pridejsenzordum(new senzorPohybovy());
-	Daviduv.pridejsenzordum(new senzorPozarni());
-	Daviduv.pridejsenzordum(new co2senzor());
-
-	Daviduv.pridejsenzor(d_budova::GARAZ, new co2senzor());
-
-	Daviduv.zamknivse();
-
-	Daviduv.odemkni(GARAZ);
-
-	Daviduv.zamknigaraz();
-
-	Daviduv.odemkni(VSE);
-	/**/
-	Daviduv.ulozkonfiguraci();
 	
+	try {
+		Daviduv.pridejsenzordum(new senzorPohybovy());
+		Daviduv.pridejsenzordum(new senzorPozarni());
+		Daviduv.pridejsenzordum(new co2senzor());
 
-	Daviduv.zobraz();
+		Daviduv.pridejsenzor(d_budova::GARAZ, new co2senzor());
 
+		Daviduv.zamknivse();
+
+		Daviduv.odemkni(GARAZ);
+
+		Daviduv.zamknigaraz();
+
+		Daviduv.odemkni(VSE);
+		
+		
+		fstream f("C:\\Temp\\centrala.txt", ios::out);
+		f << Daviduv;
+		f.close();
+		//Daviduv.ulozkonfiguraci();
+
+
+		Daviduv.zobraz();
+
+	}
+	catch (runtime_error& e) {
+		cout << "Chyba: " << e.what() << endl;
+	}
 	return 0;
 }

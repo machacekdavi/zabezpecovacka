@@ -78,22 +78,11 @@ base* centrala::vyberbudovy(d_budova budova)
 /* ulozi celou konfiguraci centraly vcetne vsech cidel , vzdy smaze soubor
  a prise novym kompletnim ulozenim manula je http://www.cplusplus.com/doc/tutorial/files/
 */
-void centrala::ulozkonfiguraci()
-{
-	fstream f("C:\\Temp\\centrala.dat", ios::out | ios::binary | ios::trunc);
-	if (!f)  cout<< "Nepodarilo se otevrit inicializacni soubor";
-	f.write((char*)&this->_domov , sizeof(this->_domov));
-	f.write((char*)&this->_garaz, sizeof(this->_garaz));
-	f.close();
-}
 
-void centrala::inicializace()
+std::ostream& operator<<(std::ostream& stm, const centrala& cen)
 {
-	fstream f("C:\\Temp\\centrala.dat", ios::in | ios::binary );
-	if (!f)  cout << "Nepodarilo se otevrit inicializacni soubor";
-	f.read((char*)&this->_domov, sizeof(this->_domov));
-	f.read((char*)&this->_garaz, sizeof(this->_garaz));
-	f.close();
+	stm << cen._domov;
+	return stm;
 }
 
 
@@ -104,7 +93,11 @@ std::ostream& operator<< (std::ostream& stm, const garaz& gar)
 	
 	// zapis pole senzoru (vector<senzor*>pole)
 	stm << gar.pole.size() << '\n'; // #assignments on the next lime
-	
+	for (vector<senzor*>::const_iterator it = gar.pole.begin(); it != gar.pole.end(); it++)
+	{
+		stm << (*it);
+	}
+
 	//for (const std::string& s : gar.pole&) stm << s << '\n'; // one assignment per line
 	return stm;
 }
@@ -114,7 +107,7 @@ std::ostream& operator<< (std::ostream& stm, const garaz& gar)
 //																				 // zapis pole senzoru (vector<senzor*>pole)
 //	//stm << pole.size() << '\n'; // #assignments on the next lime
 //
-//	for (vector<senzor*>::iterator it = pole.begin(); it != bb.pole.end(); ++it)
+//	for (vector<senzor*>::iterator it = bb.pole.begin(); it != bb.pole.end(); ++it)
 //	{
 //		(*it)->jakysenzor();
 //	}

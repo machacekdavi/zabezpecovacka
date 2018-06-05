@@ -60,8 +60,7 @@ public:
 	void pridejsenzor(d_budova budova, senzor* sen);
 	void smazsenzor();
 	void zobraz();
-	void inicializace();
-	void ulozkonfiguraci();
+	friend std::ostream &operator<<(std::ostream &stm, const centrala &cen);
 	
 
 private:

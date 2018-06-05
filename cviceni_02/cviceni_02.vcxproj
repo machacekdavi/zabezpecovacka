@@ -19,9 +19,9 @@
     </ProjectConfiguration>
   </ItemGroup>
   <PropertyGroup Label="Globals">
-    <ProjectGuid>{5F1631CA-F54B-46ED-AA85-3C2F78EFA37A}</ProjectGuid>
+    <ProjectGuid>{92A2E21E-3EA2-4E4B-A2E1-6CFA5674B571}</ProjectGuid>
     <Keyword>Win32Proj</Keyword>
-    <RootNamespace>Priprava_Test</RootNamespace>
+    <RootNamespace>cviceni_02</RootNamespace>
     <WindowsTargetPlatformVersion>8.1</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
@@ -147,6 +147,12 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="student.cpp" />
+    <ClCompile Include="zvire.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="student.h" />
+    <ClInclude Include="zvire.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
